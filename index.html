@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ananas</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url(r"C:/Users/user-pc/Downloads/Anna/stars.gif") fixed; /* Use raw string literal with forward slashes */
+            text-align: center;
+            background-size: cover;
+        }
+
+        header {
+            background-color: #ff69b4;
+            padding: 20px;
+            color: white;
+            font-size: 32px;
+            border-radius: 0 0 20px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            padding: 20px;
+            color: white;
+            border-radius: 10px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 0;
+            background: rgba(255, 105, 180, 0.7);
+            min-height: 100%; /* Set a minimum height to allow scrolling */
+        }
+
+        footer {
+            background-color: #ff69b4;
+            color: white;
+            padding: 10px;
+            border-radius: 5px 5px 0 0;
+            position: fixed;
+            bottom: 0;
+            width: %;
+            z-index: 1;
+        }
+
+        #countdown {
+            font-size: 24px;
+            margin-top: 20px;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tab {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #ff69b4;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .tab:hover {
+            background-color: #ff8acc;
+        }
+
+        .collage-container {
+            display: none;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .collage-container.active {
+            display: flex;
+        }
+
+        .collage-photo {
+            max-width: 100%;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Add this style to enable scrolling */
+        html, body {
+            height: 100%;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Our Website of memories</h1>
+    </header>
+
+    <section>
+        <h2>Welcome to our special place!</h2>
+        <p>This website is dedicated to you, my love. I hope you enjoy the little surprises I have for you; I'll update this page every month.</p>
+        <img src="images\IMG_5693.jpg" alt="A special moment" width="20%">
+
+        
+        <div id="countdown"></div>
+
+        
+        <div class="tabs">
+            <div class="tab" onclick="showMonth('January')">January</div>
+            <div class="tab" onclick="showMonth('February')">February</div>
+			<div class="tab" onclick="showMonth('March')">March</div>
+            
+        </div>
+
+        
+        <div id="January" class="collage-container active">
+          
+            <img class="collage-photo" src="images\IMG_5685.jpg" alt="January Photo 1" width="15%">
+            <img class="collage-photo" src="images\603f9bfc-726e-4063-ab28-e03514dc3e5a.JPG" alt="January Photo 2" width="30%">
+          
+        </div>
+
+        <div id="February" class="collage-container">
+            <img class="collage-photo" src="images\February\IMG_5835.jpg" alt="February Photo 1" width="15%">
+            <img class="collage-photo" src="images\February\IMG_5856.jpg" alt="February Photo 2" width="15%">
+			<img class="collage-photo" src="images\February\IMG_5879.jpg" alt="February Photo 3" width="15%">
+			<img class="collage-photo" src="images\February\IMG_5945.jpg" alt="February Photo 4" width="15%">
+			<img class="collage-photo" src="images\February\IMG_5969.jpg" alt="February Photo 5" width="15%">
+			<img class="collage-photo" src="images\February\IMG_5843.jpg" alt="February Photo 6" width="15%">
+			<img class="collage-photo" src="images\February\IMG_5853.jpg" alt="February Photo 7" width="15%">
+        </div>
+
+       
+    </section>
+
+    <footer>
+        <p>Created with ❤️ by Kalamazoo</p>
+    </footer>
+
+    <script>
+        const startDate = new Date('2024-01-06T00:00:00Z');
+
+        function updateCountup() {
+            const now = new Date();
+            const timeDifference = now - startDate;
+
+            
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+           
+            document.getElementById('countdown').innerHTML = `Our Time together since January 6, 2024: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+       
+        setInterval(updateCountup, 1000);
+
+        
+        updateCountup();
+
+        function showMonth(month) {
+            
+            const collageContainers = document.querySelectorAll('.collage-container');
+            collageContainers.forEach(container => {
+                container.classList.remove('active');
+            });
+
+           
+            const selectedContainer = document.getElementById(month);
+            selectedContainer.classList.add('active');
+        }
+    </script>
+</body>
+</html>
